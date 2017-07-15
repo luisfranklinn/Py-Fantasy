@@ -1,0 +1,3 @@
+001|Lula|Héroi|30.00|True||
+003|Temer|Vilão|00.01|True||
+002|Negão do zip zop|Famoso|99.00|True|aa|
