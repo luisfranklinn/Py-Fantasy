@@ -3,6 +3,8 @@ import os
 import re
 from datetime import datetime, date
 
+DIGITE_TELEFONE = "Digite o seu celular = xxxxxxxxxxx "
+
 def cpf_existente(cpf):
     if cpf in clientes:
         print("CPF já cadastrado")
@@ -78,7 +80,7 @@ def altera_dados():
         if opcao22.strip() == '1':
             fone = input("Digite o novo numero")
             while not valida_telefone(fone):
-                fone = input("Digite o seu celular = xxxxxxxxxxx ")
+                fone = input(DIGITE_TELEFONE)
                 fone = fone.split(' ')
                 clientes[nome][1] = fone
             print("Numero alterado com sucesso.")
@@ -121,9 +123,9 @@ def cadastra_usuario():
     while not valida_cpf(cpf) or not cpf_existente(cpf):
         print("CPF inválido.")
         cpf = input("Digite seu CPF: ")
-    fone = input("Digite o seu celular = xxxxxxxxxxx ")
+    fone = input(DIGITE_TELEFONE)
     while not valida_telefone(fone):
-        fone = input("Digite o seu celular = xxxxxxxxxxx ")
+        fone = input(DIGITE_TELEFONE)
         fone.split(' ')
     valida_telefone(fone)
 
