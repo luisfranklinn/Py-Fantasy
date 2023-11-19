@@ -126,7 +126,7 @@ def cadastra_usuario():
     fone = input(DIGITE_TELEFONE)
     while not valida_telefone(fone):
         fone = input(DIGITE_TELEFONE)
-        fone.split(' ')
+        fone = fone.split(' ')
     valida_telefone(fone)
 
     email = input("Digite o seu email: ")
