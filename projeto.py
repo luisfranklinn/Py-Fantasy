@@ -74,11 +74,11 @@ def altera_dados():
 
         #Mapeamento
         opcoes = {
-            '1': alteraFone,
-            '2': alteraEmail,
-            '3': alteraNasc,
-            '4': alteraCidade,
-            '5': alteraEstado
+            '1': altera_fone,
+            '2': altera_email,
+            '3': altera_nasc,
+            '4': altera_cidade,
+            '5': altera_estado
         }
 
         if opcao22.strip() in opcoes:
@@ -96,7 +96,7 @@ def mostra_opcoes():
   print("4 - Cidade")
   print("5 - Estado")
 
-def alteraFone(nome):
+def altera_fone(nome):
     fone = input("Digite o novo numero")
     while valida_telefone(fone) == False:
         fone = input("Digite o seu celular = xxxxxxxxxxx ")
@@ -105,25 +105,25 @@ def alteraFone(nome):
     print("Numero alterado com sucesso.")
 
 
-def alteraEmail(nome):
+def altera_email(nome):
     email = input("Digite o novo email.")
     while valida_email(email) == False:
         email = input("Email inexistente \nDigite o seu email: ")
     clientes[nome][3] = email
     print("Email alterado com sucesso.")
 
-def alteraNasc(nome):
+def altera_nasc(nome):
     nasc = input("Digite a nova data de nascimento XX/XX/XXXXX: ")
     valida_data(nasc)
     clientes[nome][4] = nasc
     print("Data de Nascimento alterado.")
 
-def alteraCidade(nome):
+def altera_cidade(nome):
     cidade = input("Digite a nova cidade: ")
     clientes[nome][5] = cidade
     print("Cidade alterada com sucesso.")
 
-def alteraEstado(nome):
+def altera_estado(nome):
     estado = input("Digite o novo estado: ")
     while valida_uf(estado) == False:
         estado = input("Estado Inválido.\nDigite o seu estado: ")
