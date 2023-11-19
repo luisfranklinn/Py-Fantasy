@@ -79,7 +79,7 @@ def altera_dados():
             fone = input("Digite o novo numero")
             while not valida_telefone(fone):
                 fone = input("Digite o seu celular = xxxxxxxxxxx ")
-                fone.split(' ')
+                fone = fone.split(' ')
                 clientes[nome][1] = fone
             print("Numero alterado com sucesso.")
         elif opcao22.strip() == '2':
