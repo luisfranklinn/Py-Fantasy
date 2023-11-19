@@ -138,7 +138,6 @@ def cadastra_usuario():
     estado = input("Digite o seu estado (Sigla): ")
     while not valida_uf(estado):
         estado = input("Estado Inválido.\nDigite o seu estado: ")
-    nome = nome
     contadorc = ''
     clientes[cpf] = [nome, fone, cpf, email, nasc, cidade, estado, contadorc]
     grava_clientes()
