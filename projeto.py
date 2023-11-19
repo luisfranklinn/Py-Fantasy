@@ -56,7 +56,7 @@ def valida_email(email):
                 return True
 
 def valida_data(d):
-    while not re.match('(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012]/[12][0-9]{3})', d):
+    while not re.match(r'(0[1-9]|[12]\d|3[01])/(0[1-9]|1[012]/[12][0-9]{3})', d):
         d = input("Data inválida!\nDigite uma data válida no formato (xx/xx/xxxx): ")
 
 def valida_uf(a):
