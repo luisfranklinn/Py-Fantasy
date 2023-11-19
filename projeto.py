@@ -67,46 +67,68 @@ def valida_uf(a):
     return a in estados
 
 def altera_dados():
-    nome = input("Qual o CPF do cliente que você deseja alterar os dados:")
+    nome = input("Qual o CPF do cliente que vc deseja alterar os dados:")
     if nome in clientes:
-        print("O que você pode alterar.")
-        print("1 - Fone")
-        print("2 - Email")
-        print("3 - Data de Nascimento")
-        print("4 - Cidade")
-        print("5 - Estado")
+        mostra_opcoes()
         opcao22 = input("Digite o que deseja alterar.")
 
-        if opcao22.strip() == '1':
-            fone = input("Digite o novo numero")
-            while not valida_telefone(fone):
-                fone = input(DIGITE_TELEFONE)
-                fone = fone.split(' ')
-                clientes[nome][1] = fone
-            print("Numero alterado com sucesso.")
-        elif opcao22.strip() == '2':
-            email = input("Digite o novo email.")
-            while not valida_email(email):
-                email = input("Email inexistente \nDigite o seu email: ")
-            clientes[nome][3] = email
-            print("Email alterado com sucesso.")
-        elif opcao22.strip() == '3':
-            nasc = input("Digite a nova data de nascimento XX/XX/XXXXX: ")
-            valida_data(nasc)
-            clientes[nome][4] = nasc
-            print("Data de Nascimento alterado.")
-        elif opcao22.strip() == '4':
-            cidade = input("Digite a nova cidade: ")
-            clientes[nome][5] = cidade
-            print("Cidade alterada com sucesso.")
-        elif opcao22.strip() == '5':
-            estado = input("Digite o novo estado: ")
-            while not valida_uf(estado):
-                estado = input("Estado Inválido.\nDigite o seu estado: ")
-            clientes[nome][6] = estado
-            print("Estado alterado com sucesso.")
+        #Mapeamento
+        opcoes = {
+            '1': alteraFone,
+            '2': alteraEmail,
+            '3': alteraNasc,
+            '4': alteraCidade,
+            '5': alteraEstado
+        }
+
+        if opcao22.strip() in opcoes:
+            opcoes[opcao22.strip()](nome)
+        else:
+            print("Opção inválida.")
     else:
         print("Usuario nao existe.")
+
+def mostra_opcoes():
+  print("o que você pode alterar.")
+  print("1 - Fone")
+  print("2 - Email")
+  print("3 - Data de Nascimento")
+  print("4 - Cidade")
+  print("5 - Estado")
+
+def alteraFone(nome):
+    fone = input("Digite o novo numero")
+    while valida_telefone(fone) == False:
+        fone = input("Digite o seu celular = xxxxxxxxxxx ")
+        fone.split(' ')
+        clientes[nome][1] = fone
+    print("Numero alterado com sucesso.")
+
+
+def alteraEmail(nome):
+    email = input("Digite o novo email.")
+    while valida_email(email) == False:
+        email = input("Email inexistente \nDigite o seu email: ")
+    clientes[nome][3] = email
+    print("Email alterado com sucesso.")
+
+def alteraNasc(nome):
+    nasc = input("Digite a nova data de nascimento XX/XX/XXXXX: ")
+    valida_data(nasc)
+    clientes[nome][4] = nasc
+    print("Data de Nascimento alterado.")
+
+def alteraCidade(nome):
+    cidade = input("Digite a nova cidade: ")
+    clientes[nome][5] = cidade
+    print("Cidade alterada com sucesso.")
+
+def alteraEstado(nome):
+    estado = input("Digite o novo estado: ")
+    while valida_uf(estado) == False:
+        estado = input("Estado Inválido.\nDigite o seu estado: ")
+    clientes[nome][6] = estado
+    print("Estado alterado com sucesso.")
 
 def apaga_cliente():
     CPF = input("Digite o CPF do cliente que deseja apagar: ")
