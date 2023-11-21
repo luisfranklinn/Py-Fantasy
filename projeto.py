@@ -5,6 +5,10 @@ from datetime import datetime, date
 
 DIGITE_TELEFONE = "Digite o seu celular = xxxxxxxxxxx "
 
+clientes_bd = 'clientes.txt'
+fantasias_bd = 'fantasias.txt'
+vendas_bd = 'vendas.txt'
+
 def cpf_existente(cpf):
     if cpf in clientes:
         print("CPF já cadastrado")
@@ -293,37 +297,37 @@ def lista_vendas():
         print("---------------")
 
 def grava_clientes():
-    with open('clientes.txt', 'w') as file:
+    with open(clientes_bd, 'w') as file:
         for cliente in clientes:
             file.write(f"{cliente},{','.join(clientes[cliente])}\n")
 
 def grava_fantasias():
-    with open('fantasias.txt', 'w') as file:
+    with open(fantasias_bd, 'w') as file:
         for fantasia in fantasias:
             file.write(f"{fantasia},{','.join(fantasias[fantasia])}\n")
 
 def grava_vendas():
-    with open('vendas.txt', 'w') as file:
+    with open(vendas_bd, 'w') as file:
         for venda in vendas:
             file.write(f"{','.join(map(str, venda))}\n")
 
 def carrega_clientes():
-    if os.path.exists('clientes.txt'):
-        with open('clientes.txt', 'r') as file:
+    if os.path.exists(clientes_bd):
+        with open(clientes_bd, 'r') as file:
             for line in file:
                 data = line.strip().split(',')
                 clientes[data[0]] = data[1:]
 
 def carrega_fantasias():
-    if os.path.exists('fantasias.txt'):
-        with open('fantasias.txt', 'r') as file:
+    if os.path.exists(fantasias_bd):
+        with open(fantasias_bd, 'r') as file:
             for line in file:
                 data = line.strip().split(',')
                 fantasias[data[0]] = data[1:]
 
 def carrega_vendas():
-    if os.path.exists('vendas.txt'):
-        with open('vendas.txt', 'r') as file:
+    if os.path.exists(vendas_bd):
+        with open(vendas_bd, 'r') as file:
             for line in file:
                 data = line.strip().split(',')
                 vendas.append(data)
